@@ -314,12 +314,14 @@ export function MobileDatePicker({ value, onChange, mode = 'solar' }: MobileDate
             const lunar: any = (lsr as any).lunar
             const mName = typeof lunar.getMonthName === 'function' ? lunar.getMonthName() : (monthNames[(lunar.month % 100) - 1] || `${lunar.month}月`)
             const dName = typeof lunar.getDayName === 'function' ? lunar.getDayName() : (dayNames[(lunar.day - 1)] || `${lunar.day}日`)
+            const hhmm = `${String(value.hour).padStart(2, "0")}:${String(value.minute).padStart(2, "0")}`
             return (
-              <>农历 {toCnYear(lunar.year)}年 {mName} {dName}（{value.year}年 {value.month}月 {value.day}日 {String(value.hour).padStart(2, "0")}:{String(value.minute).padStart(2, "0")}）</>
+              <>{toCnYear(lunar.year)}年 {mName} {dName} {hhmm}</>
             )
           } catch {
+            const hhmm = `${String(value.hour).padStart(2, "0")}:${String(value.minute).padStart(2, "0")}`
             return (
-              <>农历 {toCnYear(value.year)}年 {value.month}月 {value.day}日 {String(value.hour).padStart(2, "0")}:{String(value.minute).padStart(2, "0")} </>
+              <>{toCnYear(value.year)}年 {value.month}月 {value.day}日 {hhmm}</>
             )
           }
         })()}
