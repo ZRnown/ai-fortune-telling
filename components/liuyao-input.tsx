@@ -40,14 +40,20 @@ export function LiuyaoInput({ onChange, onDateTimeChange }: LiuyaoInputProps) {
   ])
 
   const toggleYaoType = (index: number) => {
-    const newYaos = yaos.map((yao, i) => (i === index ? { ...yao, type: yao.type === "yang" ? "yin" : "yang" } : yao))
+    const newYaos: Yao[] = yaos.map((yao, i): Yao =>
+      i === index
+        ? { ...yao, type: (yao.type === "yang" ? "yin" : "yang") as YaoType }
+        : yao,
+    )
     setYaos(newYaos)
     onChange?.({ question, yaos: newYaos, dateTime: birthDateTime })
   }
 
   const toggleYaoState = (index: number) => {
-    const newYaos = yaos.map((yao, i) =>
-      i === index ? { ...yao, state: yao.state === "static" ? "moving" : "static" } : yao,
+    const newYaos: Yao[] = yaos.map((yao, i): Yao =>
+      i === index
+        ? { ...yao, state: (yao.state === "static" ? "moving" : "static") as YaoState }
+        : yao,
     )
     setYaos(newYaos)
     onChange?.({ question, yaos: newYaos, dateTime: birthDateTime })
