@@ -150,3 +150,24 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Add smooth scrollbar for horizontal scroll containers */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Improved animation delays for loading dots */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+}
